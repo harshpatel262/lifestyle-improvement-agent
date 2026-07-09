@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Steady — AI Lifestyle Coach</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <h1>Steady</h1>
+      <p class="tagline">One small step a day. Sleep first.</p>
+    </header>
+
+    <!-- Onboarding -->
+    <section id="onboarding" class="card hidden">
+      <h2>Let's set you up</h2>
+      <form id="onboarding-form">
+        <label>Your name
+          <input name="name" required placeholder="Alex" />
+        </label>
+        <label>Sleep target (hours per night)
+          <input name="sleep_target_hours" type="number" step="0.5" min="4" max="12" value="7.5" />
+        </label>
+        <label>One habit you want less of
+          <input name="bad_habit" required placeholder="doomscrolling at night" />
+        </label>
+        <label>What you'd rather do instead
+          <select name="replacement_hobby">
+            <option>going to the gym</option>
+            <option>playing a sport</option>
+            <option>playing chess</option>
+            <option>joining a community / club</option>
+            <option>reading</option>
+          </select>
+        </label>
+        <label>Long-term goal
+          <select name="long_term_goal" id="goal-select">
+            <option value="lose_weight">Lose weight (slow &amp; sustainable)</option>
+            <option value="learn_skill">Learn a skill</option>
+            <option value="none">Just build better habits</option>
+          </select>
+        </label>
+        <label id="goal-detail-row">Goal detail
+          <input name="goal_detail" placeholder="e.g. lose 8 kg, or: guitar" />
+        </label>
+        <button type="submit">Start</button>
+      </form>
+    </section>
+
+    <!-- Dashboard -->
+    <section id="dashboard" class="hidden">
+      <div class="card phase-card">
+        <div class="phase-label" id="phase-label"></div>
+        <div class="streaks" id="streaks"></div>
+      </div>
+
+      <div class="card">
+        <h2>Today's check-in</h2>
+        <form id="checkin-form">
+          <label>Hours slept last night
+            <input name="sleep_hours" type="number" step="0.25" min="0" max="24" required />
+          </label>
+          <label class="check-row hidden" id="habit-row">
+            <input type="checkbox" name="habit_replaced" />
+            <span id="habit-question"></span>
+          </label>
+          <label class="check-row hidden" id="goal-row">
+            <input type="checkbox" name="goal_action_done" />
+            <span id="goal-question"></span>
+          </label>
+          <label>Anything on your mind? (optional)
+            <input name="note" placeholder="stressful day at work…" />
+          </label>
+          <button type="submit" id="checkin-btn">Check in</button>
+        </form>
+      </div>
+
+      <div class="card coach-card hidden" id="coach-card">
+        <h2>Your coach says</h2>
+        <p id="coach-message"></p>
+        <div class="action-box">
+          <strong>Today's one thing</strong>
+          <p id="daily-action"></p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>History</h2>
+        <ul id="history" class="history"></ul>
+      </div>
+    </section>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>
